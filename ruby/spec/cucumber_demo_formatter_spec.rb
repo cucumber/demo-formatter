@@ -29,4 +29,19 @@ describe CucumberDemoFormatter do
     s = output.read
     expect(s).to eq('👽😃🥶⏰🤷🦄💣')
   end
+
+  context "acceptance testing" do
+    it "can format examples-tables.feature.ndjson from the CCK" do
+      formatter = CucumberDemoFormatter.new
+      output = StringIO.new
+
+      ndjson_data = File.read('../testdata/examples-tables.feature.ndjson')
+      message_enumerator = Cucumber::Messages::NdjsonToMessageEnumerator.new(ndjson_data)
+      formatter.process_messages(message_enumerator, output)
+
+      output.rewind
+      s = output.read
+      expect(s).to eq("😃😃😃😃😃😃😃😃💣😃😃💣😃🤷🥶😃😃🤷\n")
+    end
+  end
 end
