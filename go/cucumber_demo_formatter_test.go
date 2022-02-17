@@ -1,11 +1,14 @@
 package cucumber_demo_formatter
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
-	"github.com/cucumber/common/messages/go/v17"
-	"github.com/stretchr/testify/require"
+	"os"
 	"testing"
+
+	messages "github.com/cucumber/common/messages/go/v17"
+	"github.com/stretchr/testify/require"
 )
 
 func TestAllResultTypes(t *testing.T) {
@@ -33,6 +36,19 @@ func TestAllResultTypes(t *testing.T) {
 
 	require.EqualValues(t,
 		"👽😃🥶⏰🤷🦄💣\n",
+		stdout.String())
+}
+
+func TestAcceptanceCriteria(t *testing.T) {
+	file, err := os.Open("../testdata/examples-tables.feature.ndjson")
+	require.NoError(t, err)
+	defer file.Close()
+
+	stdout := &bytes.Buffer{}
+	ProcessMessages(bufio.NewReader(file), stdout)
+
+	require.EqualValues(t,
+		"😃😃😃😃😃😃😃😃💣😃😃💣😃🤷🥶😃😃🤷\n",
 		stdout.String())
 }
 
