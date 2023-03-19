@@ -3,7 +3,7 @@ module github.com/cucumber/demo-formatter/go
 require (
 	github.com/cucumber/common/messages/go/v17 v17.1.1
 	github.com/cucumber/common/messages/go/v19 v19.1.2
-	github.com/stretchr/testify v1.8.1
+	github.com/stretchr/testify v1.8.2
 )
 
 require (
