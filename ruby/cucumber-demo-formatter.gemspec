@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
                     'source_code_uri'   => 'https://github.com/cucumber/common/blob/main/cucumber-demo-formatter/ruby',
                   }
 
-  s.add_dependency 'cucumber-messages', '~> 22.0', '>= 22.0.0'
+  s.add_dependency 'cucumber-messages', '~> 27.0', '>= 27.2.0'
   s.add_development_dependency 'rake', '~> 13.0', '>= 13.0.5'
   s.add_development_dependency 'rspec', '~> 3.10', '>= 3.10.0'
 
